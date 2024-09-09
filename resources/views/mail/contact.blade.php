@@ -15,6 +15,6 @@ Here is the message body.
     {{ $contactMail->message }}
 @endif
 
-Thanks,<br>
+Merci,<br>
 {{ config('app.name') }}
 </x-mail::message>

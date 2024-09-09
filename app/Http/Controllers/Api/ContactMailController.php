@@ -26,34 +26,41 @@ class ContactMailController extends Controller
     {
         // Validation des données
         $validatedData = $request->validate([
-            'services' => 'required|array', // Champs "services" doit être un tableau
-            'services.*' => 'string', // Tous les éléments du tableau "services" doivent être des chaînes de caractères
-            'budget' => 'required|array|size:2', // Champs "budget" doit être un tableau de taille 2
-            'budget.*' => 'integer', // Tous les éléments du tableau "budget" doivent être des entiers
+            'services' => 'required|array',
+            'services.*' => 'string',
+            'budget' => 'required|array|size:2',
+            'budget.*' => 'integer',
             'company' => 'required|string',
             'email' => 'required|email',
             'firstName' => 'required|string',
             'lastName' => 'required|string',
             'message' => 'required|string',
             'phoneNumber' => 'nullable|string',
-            'website' => 'nullable|string',
+            'website' => 'nullable|url',
         ]);
 
         // Création d'un nouveau contact de messagerie
         $contactMail = ContactMail::create([
-            'services' => json_encode($validatedData['services']), // Convertir le tableau en JSON
-            'budget' => json_encode($validatedData['budget']), // Convertir le tableau en JSON
+            'services' => json_encode($validatedData['services']),
+            'budget' => json_encode($validatedData['budget']),
             'company' => $validatedData['company'],
             'email' => $validatedData['email'],
             'firstName' => $validatedData['firstName'],
             'lastName' => $validatedData['lastName'],
             'message' => $validatedData['message'],
-            'phoneNumber' => $validatedData['phoneNumber'],
-            'website' => $validatedData['website'],
+            'phoneNumber' => $validatedData['phoneNumber'] ?? null,
+            'website' => $validatedData['website'] ?? null,
         ]);
 
         // Envoi de l'e-mail
-        Mail::to('jacques.steeven@gmail.com')->send(new SendMail($contactMail));
+        $recipients = [
+            'd.brault@madin-ia.com',
+            'jh.joseph@madin-ia.com',
+            's.jacques@madin-ia.com',
+            'a.loza@madin-ia.com'
+        ];
+
+        Mail::to($recipients)->send(new SendMail($contactMail));
 
         // Retourne les informations du nouveau contact de messagerie au format JSON
         return response()->json($contactMail, 201);
