@@ -2,12 +2,12 @@
 # Nouveau message de contact
 
 ## Informations de contact
-Entreprise : {{ $contactMail->company }}
-Prénom : {{ $contactMail->firstName }}
-Nom : {{ $contactMail->lastName }}
-Email : {{ $contactMail->email }}
-Téléphone : {{ $contactMail->phoneNumber ?: 'Non fourni' }}
-Site web : {{ $contactMail->website ?: 'Non fourni' }}
+- Entreprise : {{ $contactMail->company }}
+- Prénom : {{ $contactMail->firstName }}
+- Nom : {{ $contactMail->lastName }}
+- Email : {{ $contactMail->email }}
+- Téléphone : {{ $contactMail->phoneNumber ?: 'Non fourni' }}
+- Site web : {{ $contactMail->website ?: 'Non fourni' }}
 
 @if ($contactMail->message)
 ## Message
