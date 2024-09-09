@@ -1,24 +1,20 @@
-@component('mail::message')
-    # Bonjour
+<x-mail::message>
+# Introduction
 
-    Ceci est un message test.
+Here is the message body.
 
-    {{-- @component('mail::button', ['url' => '']) // Ajoutez l'URL dynamique ici
-Button Text
-@endcomponent --}}
+## Contact Information
+- **Company:** {{ $contactMail->company }}
+- **First Name:** {{ $contactMail->firstName }}
+- **Last Name:** {{ $contactMail->lastName }}
+- **Email:** {{ $contactMail->email }}
+- **Phone Number:** {{ $contactMail->phoneNumber }}
 
-    ## Contact Information
-    - **Company:** {{ $contactMail->company }}
-    - **First Name:** {{ $contactMail->firstName }}
-    - **Last Name:** {{ $contactMail->lastName }}
-    - **Email:** {{ $contactMail->email }}
-    - **Phone Number:** {{ $contactMail->phoneNumber }}
+@if ($contactMail->message)
+    ## Message
+    {{ $contactMail->message }}
+@endif
 
-    @if ($contactMail->message)
-        ## Message
-        {{ $contactMail->message }}
-    @endif
-
-    Merci,<br>
-    {{ config('app.name') }}
-@endcomponent
+Thanks,<br>
+{{ config('app.name') }}
+</x-mail::message>

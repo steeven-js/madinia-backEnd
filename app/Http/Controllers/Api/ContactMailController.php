@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactMailController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         // Validation des données
@@ -42,9 +53,33 @@ class ContactMailController extends Controller
         ]);
 
         // Envoi de l'e-mail
-        Mail::to(['d.brault@madin-ia.com','Jh.Joseph@madin-ia.com', 's.jacques@madin-ia.com ', 'a.loza@madin-ia.com'])->send(new SendMail($contactMail));
+        Mail::to('jacques.steeven@gmail.com')->send(new SendMail($contactMail));
 
         // Retourne les informations du nouveau contact de messagerie au format JSON
         return response()->json($contactMail, 201);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
