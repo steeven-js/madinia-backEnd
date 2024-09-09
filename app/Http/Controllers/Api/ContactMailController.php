@@ -53,11 +53,14 @@ class ContactMailController extends Controller
         ]);
 
         // Envoi de l'e-mail
+        // $recipients = [
+        //     'd.brault@madin-ia.com',
+        //     'jh.joseph@madin-ia.com',
+        //     's.jacques@madin-ia.com',
+        //     'a.loza@madin-ia.com'
+        // ];
         $recipients = [
-            'd.brault@madin-ia.com',
-            'jh.joseph@madin-ia.com',
-            's.jacques@madin-ia.com',
-            'a.loza@madin-ia.com'
+            'jacques.steevenàgmail.com',
         ];
 
         Mail::to($recipients)->send(new SendMail($contactMail));
