@@ -2,51 +2,36 @@
 # Nouveau message de contact
 
 ## Informations de contact
-<x-mail::table>
-| Champ | Valeur |
-| ----- | ------ |
-| Entreprise | {{ e($contactMail->company) }} |
-| Prénom | {{ e($contactMail->firstName) }} |
-| Nom | {{ e($contactMail->lastName) }} |
-| Email | {{ e($contactMail->email) }} |
-| Téléphone | {{ e($contactMail->phoneNumber) ?: 'Non fourni' }} |
-| Site web | {{ e($contactMail->website) ?: 'Non fourni' }} |
-</x-mail::table>
+Entreprise : {{ $contactMail->company }}
+Prénom : {{ $contactMail->firstName }}
+Nom : {{ $contactMail->lastName }}
+Email : {{ $contactMail->email }}
+Téléphone : {{ $contactMail->phoneNumber ?: 'Non fourni' }}
+Site web : {{ $contactMail->website ?: 'Non fourni' }}
 
 @if ($contactMail->message)
 ## Message
-<x-mail::panel>
-{{ e($contactMail->message) }}
-</x-mail::panel>
+{{ $contactMail->message }}
 @endif
 
 @if (!empty($contactMail->services))
 ## Services demandés
-<x-mail::table>
-| Services |
-| -------- |
 @foreach(json_decode($contactMail->services, true) as $service)
-| {{ e($service) }} |
+- {{ $service }}
 @endforeach
-</x-mail::table>
 @endif
 
 @if (!empty($contactMail->budget))
 ## Budget
-<x-mail::table>
-| Min | Max |
-| --- | --- |
 @php
     $budget = json_decode($contactMail->budget, true);
 @endphp
-| {{ number_format($budget[0], 0, ',', ' ') }} € | {{ number_format($budget[1], 0, ',', ' ') }} € |
-</x-mail::table>
+Min : {{ number_format($budget[0], 0, ',', ' ') }} €
+Max : {{ number_format($budget[1], 0, ',', ' ') }} €
 @endif
 
-<x-mail::subcopy>
 Ce message a été généré automatiquement. Veuillez ne pas y répondre directement.
-</x-mail::subcopy>
 
-Merci,<br>
+Merci,
 {{ config('app.name') }}
 </x-mail::message>
