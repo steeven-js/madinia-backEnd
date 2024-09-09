@@ -31,7 +31,7 @@ class ContactMail extends Mailable
     public function build()
     {
         return $this
-            ->from('contact@jsprod.fr') // Définissez l'adresse e-mail de l'expéditeur
+            ->from('contact@madinia.fr') // Définissez l'adresse e-mail de l'expéditeur
             ->subject('Contact Mail') // Définissez le sujet de l'e-mail
             ->markdown('mail.contact') // Définissez la vue Markdown pour le contenu de l'e-mail
             ->with(['contactMail' => $this->contactMail]); // Transmettez les données du contact de messagerie à la vue
