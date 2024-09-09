@@ -1,8 +1,6 @@
 <x-mail::message>
 # Introduction
 
-Here is the message body.
-
 ## Contact Information
 - **Company:** {{ $contactMail->company }}
 - **First Name:** {{ $contactMail->firstName }}
@@ -11,8 +9,8 @@ Here is the message body.
 - **Phone Number:** {{ $contactMail->phoneNumber }}
 
 @if ($contactMail->message)
-    ## Message
-    {{ $contactMail->message }}
+## Message
+{{ $contactMail->message }}
 @endif
 
 Merci,<br>
