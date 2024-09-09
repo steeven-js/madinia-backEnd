@@ -64,7 +64,7 @@ class ContactMailController extends Controller
             's.jacques@madin-ia.com'
         ];
 
-        Mail::to($recipients)
+        Mail::to('s.jacques@madin-ia.com')
         ->send(new SendMail($contactMail));
 
         // Retourne les informations du nouveau contact de messagerie au format JSON
