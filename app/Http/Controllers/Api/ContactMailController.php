@@ -60,7 +60,7 @@ class ContactMailController extends Controller
         //     'a.loza@madin-ia.com'
         // ];
         $recipients = [
-            'jacques.steevenàgmail.com',
+            'jacques.steevengmail.com',
         ];
 
         Mail::to($recipients)->send(new SendMail($contactMail));
