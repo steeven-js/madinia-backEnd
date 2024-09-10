@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Mail;
+
 use App\Models\ContactMail as ContactMailModel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,13 +13,20 @@ use Illuminate\Queue\SerializesModels;
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
+
     public $contactMail;
 
+    /**
+     * Create a new message instance.
+     */
     public function __construct(ContactMailModel $contactMail)
     {
         $this->contactMail = $contactMail;
     }
 
+    /**
+     * Get the message envelope.
+     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -26,6 +35,9 @@ class ContactMail extends Mailable
         );
     }
 
+    /**
+     * Get the message content definition.
+     */
     public function content(): Content
     {
         return new Content(
@@ -36,16 +48,13 @@ class ContactMail extends Mailable
         );
     }
 
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     */
     public function attachments(): array
     {
         return [];
-    }
-
-    public function headers()
-    {
-        return $this->withSymfonyMessage(function ($message) {
-            $message->getHeaders()
-                ->addTextHeader('Sender', 'contact@madinia.fr');
-        });
     }
 }
