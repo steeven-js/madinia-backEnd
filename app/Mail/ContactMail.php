@@ -31,6 +31,7 @@ class ContactMail extends Mailable
     {
         return new Envelope(
             subject: 'Nouveau message de contact',
+            from: 'contact@madinia.fr'
         );
     }
 
