@@ -36,7 +36,7 @@ class ContactMailController extends Controller
             'lastName' => 'required|string',
             'message' => 'required|string',
             'phoneNumber' => 'nullable|string',
-            // 'website' => 'nullable|url',
+            'website' => 'nullable|url',
         ]);
 
         // Création d'un nouveau contact de messagerie
