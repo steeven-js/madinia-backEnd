@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->text('message');
             $table->string('phoneNumber');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->timestamps();
         });
     }
