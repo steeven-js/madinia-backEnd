@@ -53,6 +53,7 @@ class ContactMailController extends Controller
         ]);
 
         // Envoi de l'e-mail
+
         // $recipients = [
         //     'd.brault@madin-ia.com',
         //     'jh.joseph@madin-ia.com',
